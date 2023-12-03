@@ -1,0 +1,22 @@
+<article>
+    <ul>
+      <li>
+        Место: {{ post.location }}              
+      </li>
+      <li>
+        Дата: {{ post.date }}
+      </li>
+      <li>
+        Категория: <a href="not-my-day">{{ post.category }}</a>
+      </li>
+    </ul>         
+    <p>
+      {% with request.resolver_match.view_name as view_name %}      
+        {% if view_name == 'blog:post_detail'%}
+            {{ post.text }}
+        {% else %}
+            {{ post.text|truncatewords:10 }}    
+        {% endif %}
+      {% endwith %}
+    </p>          
+  </article>
