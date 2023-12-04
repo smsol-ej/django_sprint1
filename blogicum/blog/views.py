@@ -56,7 +56,7 @@ def index(request):
 
 def post_detail(request, post_id):
     if post_id not in posts_dic:
-        raise Http404
+        raise Http404('Post not found')
     context = {'post': posts[post_id]}
     template = 'blog/detail.html'
     return render(request, template, context)
